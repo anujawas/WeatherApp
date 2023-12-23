@@ -1,8 +1,10 @@
 import React from "react";
+
+
 import CurrentWeather from "./src/components/CurrentWeather";
+import UpcomingWeather from "./src/components/UpcomingWeather";
 
 import { View, StyleSheet } from "react-native";
-import UpcomingWeather from "./src/components/UpcomingWeather";
 import { StatusBar } from "expo-status-bar";
 
 const App = () => {
