@@ -7,14 +7,21 @@ import UpcomingWeather from "./src/screens/UpcomingWeather";
 import { View, StyleSheet } from "react-native";
 import City from "./src/screens/City";
 
+import {
+  NavigationContainer
+} from "@react-navigation/native";
+
+
 const App = () => {
   return (
-    <View style={styles.container}>
-      {/* <CurrentWeather /> */}
-      {/* <UpcomingWeather /> */}
-      <City />
-    </View>
-  );
+    <NavigationContainer>
+      <View style={styles.container}>
+        <CurrentWeather />
+        {/* <UpcomingWeather /> */}
+        {/* <City /> */}
+      </View>
+    </NavigationContainer>
+  )
 }
 
 const styles = StyleSheet.create({
