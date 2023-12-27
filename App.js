@@ -1,16 +1,14 @@
 import React from "react";
 
-
 import CurrentWeather from "./src/screens/CurrentWeather";
 import UpcomingWeather from "./src/screens/UpcomingWeather";
-
-import { View, StyleSheet } from "react-native";
 import City from "./src/screens/City";
 
-import {
-  NavigationContainer
-} from "@react-navigation/native";
+import { View, StyleSheet } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
+const Tab = createMaterialTopTabNavigator();
 
 const App = () => {
   return (
