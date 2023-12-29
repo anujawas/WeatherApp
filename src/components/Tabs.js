@@ -21,7 +21,7 @@ const Tabs = () => {
             },
             tabBarLabelStyle: {
                 fontSize: 15,
-                fontWeight: 'bold'
+                fontWeight: '900'
             }
         }}
             style={{
