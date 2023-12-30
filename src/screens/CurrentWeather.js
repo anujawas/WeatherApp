@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     bodyWrapper: {
-        justifyContent: 'flex-end',
+        justifyContent: 'flex-start',
         alignItems: 'flex-start',
         paddingLeft: 25,
         margin: 40
