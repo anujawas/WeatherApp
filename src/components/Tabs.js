@@ -7,14 +7,10 @@ import City from "../screens/City";
 import { Feather } from '@expo/vector-icons'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
 import { Platform, StatusBar } from "react-native";
 
-
 const platform = Platform.OS
-
 const Tab = (platform === 'ios') ? createBottomTabNavigator() : createMaterialTopTabNavigator();
-
 const Tabs = () => {
     return (
         <Tab.Navigator screenOptions={{
