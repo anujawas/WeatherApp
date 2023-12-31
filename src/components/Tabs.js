@@ -6,10 +6,14 @@ import City from "../screens/City";
 
 import { Feather } from '@expo/vector-icons'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { StatusBar } from "react-native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
+import { Platform, StatusBar } from "react-native";
 
 
-const Tab = createMaterialTopTabNavigator();
+const platform = Platform.OS
+
+const Tab = (platform === 'ios') ? createBottomTabNavigator() : createMaterialTopTabNavigator();
 
 const Tabs = () => {
     return (
@@ -17,7 +21,15 @@ const Tabs = () => {
             tabBarActiveTintColor: 'tomato',
             tabBarInactiveTintColor: 'grey',
             tabBarStyle: {
-                backgroundColor: 'skyblue',
+                backgroundColor: 'lightblue',
+            },
+            headerStyle: {
+                backgroundColor: 'lightblue'
+            },
+            headerTitleStyle: {
+                fontWeight: 'bold',
+                fontSize: 25,
+                color: 'tomato'
             },
             tabBarLabelStyle: {
                 fontSize: 15,
