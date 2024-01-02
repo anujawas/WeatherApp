@@ -1,44 +1,34 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import { NavigationContainer } from "@react-navigation/native";
 import Tabs from "./src/components/Tabs";
 import { ActivityIndicator, StyleSheet, View } from "react-native";
 
-import * as Location from 'expo-location';
-
-
+import { useGetWeather } from "./src/hooks/useGetWeather";
+import ErrorItem from "./src/components/ErrorItem";
 
 const App = () => {
-  const [loading, setLoading] = useState(false);
-  const [location, setLocation] = useState(null);
-  const [error, setError] = useState(null);
 
 
-  useEffect(() => {
-    (async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== 'granted') {
-        setError('Permission to Access Location Denied!!');
+  const [loading, error, weather] = useGetWeather();
 
-        return
-      }
-      let location = await Location.getCurrentPositionAsync({});
 
-      setLocation(location);
-    })()
-  }, [])
-
-  if (location) {
-    console.log(location);
+  if (weather && weather.list) {
+    return (
+      <NavigationContainer >
+        <Tabs weather={weather} />
+      </NavigationContainer>
+    )
   }
   return (
     <NavigationContainer >
-      {(loading) ?
+      {(error) ?
+        <ErrorItem error={error} />
+        :
         <View style={styles.container}>
           <ActivityIndicator size={'large'} color={'blue'} />
         </View>
-        :
-        <Tabs />}
+      }
     </NavigationContainer>
   )
 }

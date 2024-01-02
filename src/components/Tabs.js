@@ -11,7 +11,7 @@ import { Platform, StatusBar } from "react-native";
 
 const platform = Platform.OS
 const Tab = (platform === 'ios') ? createBottomTabNavigator() : createMaterialTopTabNavigator();
-const Tabs = () => {
+const Tabs = ({ weather }) => {
     return (
         <Tab.Navigator screenOptions={{
             tabBarActiveTintColor: 'tomato',
@@ -36,17 +36,24 @@ const Tabs = () => {
                 marginTop: StatusBar.currentHeight || 0
             }}
         >
-            <Tab.Screen name={'Current'} component={CurrentWeather} options={{
+            <Tab.Screen name={'Current'} options={{
                 tabBarIcon: ({ focused }) => <Feather name={'droplet'} size={25} color={focused ? 'tomato' : 'black'} />
             }}
-            />
+            >
+                {() => <CurrentWeather weatherData={weather.list[0]} />}
+            </Tab.Screen>
 
-            <Tab.Screen name={'Upcoming'} component={UpcomingWeather} options={{
+            <Tab.Screen name={'Upcoming'} options={{
                 tabBarIcon: ({ focused }) => (<Feather name={'clock'} size={25} color={focused ? 'tomato' : 'black'} />)
-            }} />
-            <Tab.Screen name={'City'} component={City} options={{
+            }}>
+                {() => <UpcomingWeather weatherData={weather.list} />}
+            </Tab.Screen>
+
+            <Tab.Screen name={'City'} options={{
                 tabBarIcon: ({ focused }) => (<Feather name={'home'} size={25} color={focused ? 'tomato' : 'black'} />)
-            }} />
+            }}>
+                {() => <City weatherData={weather.city} />}
+            </Tab.Screen>
         </Tab.Navigator>
     )
 }
