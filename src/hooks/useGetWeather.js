@@ -1,14 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as Location from 'expo-location';
-import axios from "axios";
-const apiUrl = 'http://localhost:3000/weather'; // Replace with your 
-const axiosInstance = axios.create({
-    baseURL: apiUrl,
-    headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*', // Allow requests from any origin (you may want to restrict this in a production environment)
-    },
-});
+import { WEATHER_API_KEY } from 'react-native-dotenv'
 
 export const useGetWeather = () => {
     const [loading, setLoading] = useState(false);
@@ -21,7 +13,7 @@ export const useGetWeather = () => {
 
         if (lat && lon) {
             try {
-                const res = await fetch(`http://192.168.6.50:3000/weather?lat=${lat}&lon=${lon}`)
+                const res = await fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`)
                 // console.log(res);
                 const data = await res.json();
                 console.log(data);
