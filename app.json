@@ -38,15 +38,12 @@
         {
           "locationAlwaysAndWhenInUsePermission": "Allow Weather App to use your location."
         }
-      ],
-      [
-        "expo-build-properties",
-        {
-          "android": {
-            "usesCleartextTraffic": true
-          }
-        }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "8ef85bb8-9836-40a7-a855-1ffe2d53dbb2"
+      }
+    }
   }
 }
