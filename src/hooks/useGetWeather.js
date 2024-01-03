@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import * as Location from 'expo-location';
-import { WEATHER_API_KEY } from 'react-native-dotenv'
 
 export const useGetWeather = () => {
     const [loading, setLoading] = useState(false);
@@ -13,7 +12,7 @@ export const useGetWeather = () => {
 
         if (lat && lon) {
             try {
-                const res = await fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`)
+                const res = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${process.env.WEATHER_API_KEY}&units=metric`)
                 // console.log(res);
                 const data = await res.json();
                 console.log(data);
